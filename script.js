@@ -1,13 +1,23 @@
 const nextBtn = document.getElementById('next-button');
 const prevBtn = document.getElementById('previous-button');
 const slides = document.querySelectorAll('.slide');
-
+const showNavBtn = document.getElementById('show-nav-button');
+const nav = document.querySelector('nav');
 
 slides.forEach((slide, index) => { 
     slide.style.left = `${index * 100}%`  
 })  
 
-let counter = 0; 
+showNavBtn.addEventListener('click', () => {
+    if(nav.classList.contains('visible')) {
+        nav.classList.remove('visible');
+        showNavBtn.innerHTML = `<img src="images/icon-hamburger.svg" alt="">`;
+    }else { 
+        nav.classList.add('visible');
+        showNavBtn.innerHTML = `<img src="images/icon-close.svg" alt="">`
+    }
+})
+let counter = 0;  
 
 function carousel() {
     if(counter === slides.length) { 
@@ -20,11 +30,27 @@ function carousel() {
         slide.style.transform = `translateX(-${counter * 100}%)` 
     })
 }
-nextBtn.addEventListener('click', () => {
+
+function nextSlide() {
     counter++;
     carousel();
-})
-prevBtn.addEventListener('click', () => {
+}
+function prevSlide() {
     counter--;
     carousel(); 
+} 
+
+document.addEventListener('keydown', e => {
+    switch (e.key) {
+        case 'ArrowRight':
+            nextSlide();
+            break;
+        case 'ArrowLeft': 
+            prevSlide();
+            break; 
+        default:
+            return
+    }
 })
+nextBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', prevSlide);
