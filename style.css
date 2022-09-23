@@ -51,6 +51,7 @@ nav {
 .header-link {
     text-decoration: none;
     text-transform: lowercase;
+    font-weight: 600; 
     position: relative;
     color: white;
 }
@@ -114,6 +115,7 @@ nav {
     color: hsl(0, 0%, 63%);
     font-size: .9rem;
     line-height: 1.3rem;
+    font-weight: 500;
 }
 .shop-now-button {
     text-decoration: none;
@@ -190,6 +192,7 @@ footer h2 {
 footer p {
     color: hsl(0, 0%, 63%);
     font-size: .9rem;
+    font-weight: 500;
     line-height: 1.3rem;
 }
 
@@ -244,6 +247,7 @@ footer p {
     }
     nav.visible {
         opacity: 1;
+        box-shadow: 0 0 300px #000000;     
         transform: none; 
     }
     #show-nav-button {
